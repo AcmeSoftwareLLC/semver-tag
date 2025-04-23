@@ -57,8 +57,10 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: 2.0.0
+          level: minor
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+        run: echo "${{ steps.test-action.outputs.next-tag }}"
