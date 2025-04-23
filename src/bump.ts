@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import { inc, type ReleaseType } from 'semver'
 
-export default function bump(tag: string, level: ReleaseType): string {
+export function bumpTag(tag: string, level: ReleaseType): string {
   core.info(`Tag: ${tag}`)
   core.info(`Level: ${level}`)
 

@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 
-export default async function getLatestTag(token: string): Promise<string> {
+export async function getLatestTag(token: string): Promise<string> {
   const octokit = github.getOctokit(token)
   const { owner, repo } = github.context.repo
 

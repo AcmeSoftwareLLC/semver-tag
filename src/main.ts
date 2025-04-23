@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import type { ReleaseType } from 'semver'
-import bump from './bump.js'
-import getLatestTag from './tag.js'
+import { bumpTag } from './bump.js'
+import { getLatestTag } from './tag.js'
 
 export async function run(): Promise<void> {
   try {
@@ -14,7 +14,8 @@ export async function run(): Promise<void> {
       tag = await getLatestTag(token)
     }
 
-    core.setOutput('next-tag', bump(tag, level))
+    const nextTag = bumpTag(tag, level)
+    core.setOutput('next-tag', nextTag)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
