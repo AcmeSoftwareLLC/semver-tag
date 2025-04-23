@@ -1,27 +1,45 @@
 import * as core from '@actions/core'
-import { wait } from './wait.js'
+import * as github from '@actions/github'
+import { inc, type ReleaseType } from 'semver'
 
-/**
- * The main function for the action.
- *
- * @returns Resolves when the action is complete.
- */
 export async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
+    const level = core.getInput('level', { required: true }) as ReleaseType
+    const token = core.getInput('token', { required: true })
+    let tag = core.getInput('tag')
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    if (!tag) {
+      const octokit = github.getOctokit(token)
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+      const { owner, repo } = github.context.repo
+      const tags = await octokit.rest.repos.listTags({
+        owner,
+        repo,
+        per_page: 1,
+        page: 1
+      })
 
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+      if (tags.data.length === 0) {
+        core.setFailed('No tags found')
+        return
+      }
+
+      tag = tags.data[0].name
+    }
+
+    core.info(`Level: ${level}`)
+    core.info(`Tag: ${tag}`)
+
+    const nextTag = inc(tag, level)
+
+    if (nextTag === null) {
+      core.setFailed(`Invalid tag: ${tag}`)
+      return
+    }
+
+    core.info(`Next tag: ${nextTag}`)
+    core.setOutput('next-tag', nextTag)
   } catch (error) {
-    // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
   }
 }

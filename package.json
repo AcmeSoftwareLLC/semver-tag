@@ -1,23 +1,23 @@
 {
-  "name": "typescript-action",
-  "description": "GitHub Actions TypeScript template",
-  "version": "0.0.0",
-  "author": "",
+  "name": "semver-tag",
+  "description": "SemVer Tag",
+  "version": "0.0.1",
+  "author": "Acme Software LLC",
   "type": "module",
   "private": true,
-  "homepage": "https://github.com/actions/typescript-action",
+  "homepage": "https://acmesoftware.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/AcmeSoftwareLLC/semver-tag.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/typescript-action/issues"
+    "url": "https://github.com/AcmeSoftwareLLC/semver-tag/issues"
   },
   "keywords": [
     "actions"
   ],
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.ts"
   },
   "engines": {
     "node": ">=20"
@@ -37,7 +37,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.11.1"
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "semver": "^7.7.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.8",
@@ -48,6 +50,7 @@
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.17.30",
+    "@types/semver": "^7.7.0",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "eslint": "^9.24.0",
