@@ -10,7 +10,7 @@ steps:
     uses: actions/checkout@v4
 
   - name: Generate Next Tag
-    uses: AcmeSoftwareLLC/sermver-tag@v1
+    uses: AcmeSoftwareLLC/semver-tag@v1
     with:
       token: ${{ secrets.GITHUB_TOKEN }}
       level: minor # Optional, default is patch
