@@ -2,10 +2,10 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 
 export async function getLatestTag(token: string): Promise<string> {
-  const octokit = github.getOctokit(token)
+  const repos = getOctokitRepos(token)
   const { owner, repo } = github.context.repo
 
-  const tags = await octokit.rest.repos.listTags({
+  const tags = await repos.listTags({
     owner,
     repo,
     per_page: 1,
@@ -18,4 +18,8 @@ export async function getLatestTag(token: string): Promise<string> {
   }
 
   return tags.data[0].name
+}
+
+function getOctokitRepos(token: string) {
+  return github.getOctokit(token).rest.repos
 }

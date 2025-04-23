@@ -33897,9 +33897,9 @@ function requireGithub () {
 var githubExports = requireGithub();
 
 async function getLatestTag(token) {
-    const octokit = githubExports.getOctokit(token);
+    const repos = getOctokitRepos(token);
     const { owner, repo } = githubExports.context.repo;
-    const tags = await octokit.rest.repos.listTags({
+    const tags = await repos.listTags({
         owner,
         repo,
         per_page: 1,
@@ -33910,6 +33910,9 @@ async function getLatestTag(token) {
         return '';
     }
     return tags.data[0].name;
+}
+function getOctokitRepos(token) {
+    return githubExports.getOctokit(token).rest.repos;
 }
 
 async function run() {
@@ -33922,6 +33925,7 @@ async function run() {
             tag = await getLatestTag(token);
         }
         const nextTag = bumpTag(tag, level);
+        coreExports.setOutput('prev_tag', semverExports.valid(tag));
         coreExports.setOutput('next_tag', nextTag);
     }
     catch (error) {

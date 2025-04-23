@@ -1,5 +1,7 @@
 name: Semver Tag Action
-description: Analyzes the latest Git tag and calculates the next version by applying a semantic version bump.
+description:
+  Analyzes the latest Git tag and calculates the next version by applying a
+  semantic version bump.
 author: Acme Software LLC
 
 branding:
@@ -28,7 +30,8 @@ inputs:
 
 outputs:
   next_tag:
-    description: The next tag to be created based on the provided tag and increment level.
+    description:
+      The next tag to be created based on the provided tag and increment level.
 
   prev_tag:
     description: The previous tag before the increment.

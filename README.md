@@ -1,6 +1,8 @@
 # Semver Tag Action
 
-Analyzes the latest Git tag and calculates the next version by applying a semantic version bump (major, minor, patch, or custom), helping streamline release automation.
+Analyzes the latest Git tag and calculates the next version by applying a
+semantic version bump (major, minor, patch, or custom), helping streamline
+release automation.
 
 ## Usage
 
@@ -22,14 +24,16 @@ steps:
 ```
 
 ## Input Options
-| Input | Description | Required | Default |
-|-------|-------------|----------|---------
-| token | GitHub token for authentication | Yes | N/A |
-| level | Semantic versioning level to bump (major, minor, patch, [see more](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/5f5a8dd065a29934723e2d42e4d7bf6817b75fa9/types/semver/index.d.ts#L104)) | No | patch |
-| tag | The tag to analyze for the next version | No | latest tag in the repository |
+
+| Input | Description                                                                                                                                                                                        | Required | Default                      |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------- |
+| token | GitHub token for authentication                                                                                                                                                                    | Yes      | N/A                          |
+| level | Semantic versioning level to bump (major, minor, patch, [see more](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/5f5a8dd065a29934723e2d42e4d7bf6817b75fa9/types/semver/index.d.ts#L104)) | No       | patch                        |
+| tag   | The tag to analyze for the next version                                                                                                                                                            | No       | latest tag in the repository |
 
 ## Output Options
-| Output | Description |
-|--------|-------------|
+
+| Output   | Description                                                                |
+| -------- | -------------------------------------------------------------------------- |
 | next_tag | The calculated next version tag based on the provided level and latest tag |
-| prev_tag | The previous tag before the increment |
+| prev_tag | The previous tag before the increment                                      |
