@@ -32,7 +32,7 @@ inputs:
 outputs:
   next-tag:
     description:
-      The next tag to be created based on the provided tag and bump type
+      The next tag to be created based on the provided tag and increment level.
 
 runs:
   using: node20
