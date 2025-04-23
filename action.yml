@@ -1,23 +1,38 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
+name: Semver Tag Action
+description:
+  Analyzes the latest Git tag and calculates the next version by applying a
+  semantic version bump (major, minor, patch, or custom), helping streamline
+  release automation.
+author: Acme Software LLC
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: heart
+  icon: moon
   color: red
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: Your input description here
+  token:
+    description:
+      The GitHub token to use for authentication. This token must have
+      permission to read the repository's tags.
     required: true
-    default: '1000'
 
-# Define your outputs here.
+  level:
+    description:
+      The level of the semantic versioning bump to apply. Options are major,
+      minor, patch, premajor, preminor, prepatch, prerelease, or release.
+    required: false
+    default: patch
+
+  tag:
+    description:
+      The tag to update. If not provided, the action will use the latest tag
+      found in the repository.
+    required: false
+
 outputs:
-  time:
-    description: Your output description here
+  next-tag:
+    description:
+      The next tag to be created based on the provided tag and increment level.
 
 runs:
   using: node20
