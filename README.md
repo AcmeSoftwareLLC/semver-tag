@@ -32,3 +32,4 @@ steps:
 | Output | Description |
 |--------|-------------|
 | next_tag | The calculated next version tag based on the provided level and latest tag |
+| prev_tag | The previous tag before the increment |

@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import type { ReleaseType } from 'semver'
+import { valid, type ReleaseType } from 'semver'
 import { bumpTag } from './bump.js'
 import { getLatestTag } from './tag.js'
 
@@ -15,6 +15,8 @@ export async function run(): Promise<void> {
     }
 
     const nextTag = bumpTag(tag, level)
+
+    core.setOutput('prev_tag', valid(tag))
     core.setOutput('next_tag', nextTag)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
