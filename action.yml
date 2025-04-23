@@ -1,8 +1,5 @@
 name: Semver Tag Action
-description:
-  Analyzes the latest Git tag and calculates the next version by applying a
-  semantic version bump (major, minor, patch, or custom), helping streamline
-  release automation.
+description: Analyzes the latest Git tag and calculates the next version by applying a semantic version bump.
 author: Acme Software LLC
 
 branding:

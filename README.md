@@ -11,8 +11,12 @@ steps:
 
   - name: Generate Next Tag
     uses: AcmeSoftwareLLC/semver-tag@v1
+    id: semver
     with:
       token: ${{ secrets.GITHUB_TOKEN }}
       level: minor # Optional, default is patch
       tag: v1.0.0 # Optional, if not provided, the latest tag will be used
+
+  - name: Print Output
+    run: echo "${{ steps.semver.outputs.next-tag }}"
 ```
