@@ -40,33 +40,9 @@ describe('main.ts', () => {
     jest.resetAllMocks()
   })
 
-  it('Sets the time output', async () => {
+  it('Sets the next-tag output', async () => {
     await run()
 
-    // Verify the time output was set.
-    expect(core.setOutput).toHaveBeenNthCalledWith(
-      1,
-      'next-tag',
-      // Simple regex to match a time string in the format HH:MM:SS.
-      expect.stringMatching(/^\d{2}:\d{2}:\d{2}/)
-    )
+    expect(core.setOutput).toHaveBeenNthCalledWith(1, 'next-tag', '1.0.1')
   })
-
-  // it('Sets a failed status', async () => {
-  //   // Clear the getInput mock and return an invalid value.
-  //   core.getInput.mockClear().mockReturnValueOnce('this is not a number')
-
-  //   // Clear the wait mock and return a rejected promise.
-  //   wait
-  //     .mockClear()
-  //     .mockRejectedValueOnce(new Error('milliseconds is not a number'))
-
-  //   await run()
-
-  //   // Verify that the action was marked as failed.
-  //   expect(core.setFailed).toHaveBeenNthCalledWith(
-  //     1,
-  //     'milliseconds is not a number'
-  //   )
-  // })
 })
