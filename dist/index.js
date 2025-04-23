@@ -33922,7 +33922,7 @@ async function run() {
             tag = await getLatestTag(token);
         }
         const nextTag = bumpTag(tag, level);
-        coreExports.setOutput('next-tag', nextTag);
+        coreExports.setOutput('next_tag', nextTag);
     }
     catch (error) {
         if (error instanceof Error)

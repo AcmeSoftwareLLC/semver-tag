@@ -63,4 +63,4 @@ jobs:
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.next-tag }}"
+        run: echo "${{ steps.test-action.outputs.next_tag }}"

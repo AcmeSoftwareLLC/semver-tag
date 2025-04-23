@@ -40,9 +40,9 @@ describe('main.ts', () => {
     jest.resetAllMocks()
   })
 
-  it('Sets the next-tag output', async () => {
+  it('Sets the next_tag output', async () => {
     await run()
 
-    expect(core.setOutput).toHaveBeenNthCalledWith(1, 'next-tag', '1.0.1')
+    expect(core.setOutput).toHaveBeenNthCalledWith(1, 'next_tag', '1.0.1')
   })
 })

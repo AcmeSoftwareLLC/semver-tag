@@ -27,7 +27,7 @@ inputs:
     required: false
 
 outputs:
-  next-tag:
+  next_tag:
     description:
       The next tag to be created based on the provided tag and increment level.
 

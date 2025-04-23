@@ -15,7 +15,7 @@ export async function run(): Promise<void> {
     }
 
     const nextTag = bumpTag(tag, level)
-    core.setOutput('next-tag', nextTag)
+    core.setOutput('next_tag', nextTag)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
